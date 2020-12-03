@@ -1,4 +1,4 @@
-genesis-docs-cn1:
+cn-common-stateless-helm-charts:
   fullnameOverride: "docs-cn"
   
   image:
