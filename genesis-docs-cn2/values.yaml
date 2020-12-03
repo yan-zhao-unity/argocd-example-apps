@@ -1,0 +1,65 @@
+fullnameOverride: "docs-cn"
+
+image:
+  repository: unity-registry.cn-shanghai.cr.aliyuncs.com/public/docs-cn
+  tag: master-a7406266f1f603cafdd6deef5fa41258432f057e
+
+imagePullSecrets:
+  - name: regcred
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 4
+  targetCPUUtilizationPercentage: 80
+
+deployment:
+  ports:
+    - containerPort: 443
+      name: http-doc-cn
+      protocol: TCP
+    - containerPort: 444
+      name: http-444
+      protocol: TCP
+  envs:
+    - name: GO_ENV
+      value: production
+
+service:
+  type: ClusterIP
+  ports:
+    - port: 443
+      name: http-doc-cn
+      protocol: TCP
+      targetPort: http-doc-cn
+    - port: 444
+      name: http-444
+      protocol: TCP
+      targetPort: http-444
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: public
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+  hosts:
+    - host: docs.unity.cn
+      port: http-444
+      paths:
+        - /cn/Packages-cn/
+    - host: docs.unity.cn
+      port: http-doc-cn
+      paths:
+        - /
+  tls:
+    - secretName: star-unity-cn-tls
+      hosts:
+      - docs.unity.cn
+
+resources:
+  limits:
+   cpu: 1000m
+   memory: 1024Mi
+  requests:
+   cpu: 1000m
+   memory: 1024Mi
