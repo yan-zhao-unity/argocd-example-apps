@@ -10,8 +10,8 @@ cn-common-stateless-helm-charts:
   
   autoscaling:
     enabled: true
-    minReplicas: 2
-    maxReplicas: 4
+    minReplicas: 3
+    maxReplicas: 5
     targetCPUUtilizationPercentage: 80
   
   deployment:
