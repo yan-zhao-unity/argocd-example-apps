@@ -64,3 +64,5 @@ cn-common-stateless-helm-charts:
     requests:
      cpu: 1000m
      memory: 1024Mi
+     
+     //
