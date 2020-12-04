@@ -65,4 +65,3 @@ cn-common-stateless-helm-charts:
      cpu: 1000m
      memory: 1024Mi
      
-     //
