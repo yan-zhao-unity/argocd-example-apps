@@ -3,7 +3,7 @@ cn-common-stateless-helm-charts:
   
   image:
     repository: unity-registry.cn-shanghai.cr.aliyuncs.com/public/docs-cn
-    tag: int-20201210-ef7d7d7a
+    tag: int-20201210-1fe75dab
   
   imagePullSecrets:
     - name: regcred
